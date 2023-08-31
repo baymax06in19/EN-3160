@@ -18,6 +18,9 @@ transform=np.concatenate((transform,t5),axis=0).astype('uint8')
 
 fig,ax = plt.subplots()
 ax.plot(transform)
+ax.set_xlabel("Input")
+ax.set_ylabel("Output")
+ax.set_title("transform")
 ax.set_xlim(0,255) # used to set the x axis limited and fullfilled from 0 to 255
 ax.set_ylim(0,255)
 plt.show()

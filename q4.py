@@ -23,7 +23,7 @@ ax[1].set_title('Original_IMG')
 plt.show()
 
 # Apply the saturation adjustment formula
-a = 0.6  # Adjust this parameter as needed
+a = 0.2  # Adjust this parameter as needed
 sigma = 70  # Adjust this parameter as needed
 S_adjustment = a * 128 * np.exp(-(S - 128) ** 2 / (2 * sigma ** 2)) ## s + s_adjustement can be negative also that is why we check the max of o, and the calculated value
 S_corrected = np.minimum((S + S_adjustment), 255).astype('uint8')

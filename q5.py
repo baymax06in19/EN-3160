@@ -5,23 +5,18 @@ import matplotlib.pyplot as plt
 def histogram_equalization(image, num_bins=256):
     # Calculate histogram of the input image
     histogram, bins = np.histogram(image.flatten(), bins=num_bins, range=[0, 256])
-    
     # Calculate cumulative distribution function (CDF)
     cdf = histogram.cumsum()
-    
     # Normalize CDF to the dynamic range of the image
-    cdf_normalized = cdf * (num_bins - 1) / cdf[-1]
-    
+    cdf_normalized = cdf * (num_bins - 1) / cdf[-1]  
     # Map original intensities to new equalized intensities
-    equalized_image = np.interp(image.flatten(), bins[:-1], cdf_normalized)
-    
+    equalized_image = np.interp(image.flatten(), bins[:-1], cdf_normalized) 
     # Reshape to the original image shape
-    equalized_image = equalized_image.reshape(image.shape)
-    
+    equalized_image = equalized_image.reshape(image.shape) 
     return equalized_image.astype(np.uint8)
 
 # Load the image
-img = cv.imread('images_01/shells - Copy.jpg').astype('uint8')
+img = cv.imread('images_01/shells.tif').astype('uint8')
 img_equized = histogram_equalization(img)
 
 
